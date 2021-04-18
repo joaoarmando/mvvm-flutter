@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:mvvmproject/stores/app_store.dart';
+import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var store = Provider.of<AppStore>(context);
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: Text("Hello from Home!"),
+        child: Text(store.name),
       ),
     );
   }

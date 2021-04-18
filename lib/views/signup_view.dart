@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../stores/app_store.dart';
 import '../controllers/signup_controller.dart';
 import '../view-models/signup_viewmodel.dart';
-
 import 'home_view.dart';
 
 class SignUpView extends StatefulWidget {
@@ -12,10 +14,14 @@ class SignUpView extends StatefulWidget {
 class _SignUpViewState extends State<SignUpView> {
   final _formKey = GlobalKey<FormState>();
   final _controller = SignUpController();
-  var model = new SignUpViewModel();
+  var model = SignUpViewModel();
+
+  var store;
 
   @override
   Widget build(BuildContext context) {
+    store = Provider.of<AppStore>(context);
+
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -86,6 +92,7 @@ class _SignUpViewState extends State<SignUpView> {
                   setState(() {
                     _controller.signUp(model).then((data) {                      
                       setState(() { });
+                      store.setUser(data.name, data.email, data.picture, data.token);
                       Navigator.push(context, MaterialPageRoute(builder: (context) => HomeView()));
                     });
                   });
