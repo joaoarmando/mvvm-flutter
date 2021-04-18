@@ -6,12 +6,12 @@ import '../controllers/signup_controller.dart';
 import '../view-models/signup_viewmodel.dart';
 import 'home_view.dart';
 
-class SignUpView extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   @override
-  _SignUpViewState createState() => _SignUpViewState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignUpViewState extends State<SignUpView> {
+class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
   final _controller = SignUpController();
   var model = SignUpViewModel();

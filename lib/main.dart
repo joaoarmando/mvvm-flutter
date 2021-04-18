@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvmproject/views/signup_view.dart';
+import 'package:mvvmproject/page/signup_page.dart';
 import 'package:provider/provider.dart';
 
 import 'stores/app_store.dart';
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(      
           primarySwatch: Colors.blue,
         ),
-        home: SignUpView(),
+        home: SignUpPage(),
       ),
     );
   }
