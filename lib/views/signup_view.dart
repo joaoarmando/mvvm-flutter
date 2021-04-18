@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:mvvmproject/controllers/signup_controller.dart';
 import 'package:mvvmproject/view-models/signup_viewmodel.dart';
 
-class SignUpView extends StatelessWidget {
+class SignUpView extends StatefulWidget {
+  @override
+  _SignUpViewState createState() => _SignUpViewState();
+}
+
+class _SignUpViewState extends State<SignUpView> {
   final _formKey = GlobalKey<FormState>();
   final _controller = SignUpController();
   var model = new SignUpViewModel();
@@ -67,14 +72,22 @@ class SignUpView extends StatelessWidget {
                 },
                 onSaved: (value) => model.passsword = value,
               ),
-              ElevatedButton(                
+              SizedBox(height: 12),
+              model.isSigningUp ? CircularProgressIndicator() 
+              : ElevatedButton(                
                 child: Text("Cadastrar"),
                 onPressed: (){
                   if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();
                   }
+                  setState(() {
+                    model.isSigningUp = true;
+                  });
                   _controller.signUp(model).then((data) {
                     print(data.token);
+                    setState(() {
+                      model.isSigningUp = false;
+                    });
                   });
                 }, 
               )

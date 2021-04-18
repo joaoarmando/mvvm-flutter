@@ -4,6 +4,7 @@ import '../models/user_model.dart';
 
 class AccountRepository {
   Future<UserModel> createAccount(SignUpViewModel model) async{
+    await Future.delayed(Duration(milliseconds: 1500));
     return UserModel(
       id:"1",
       name:"João Armando",
