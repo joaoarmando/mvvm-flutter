@@ -84,8 +84,7 @@ class _SignUpViewState extends State<SignUpView> {
                   }
                   
                   setState(() {
-                    _controller.signUp(model).then((data) {
-                      // TODO: 
+                    _controller.signUp(model).then((data) {                      
                       setState(() { });
                       Navigator.push(context, MaterialPageRoute(builder: (context) => HomeView()));
                     });
