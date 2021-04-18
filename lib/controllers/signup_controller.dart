@@ -1,10 +1,16 @@
-
+import '../view-models/signup_viewmodel.dart';
+import '../repositories/account_repository.dart';
 import '../models/user_model.dart';
 
 class SignUpController {
-  
-  Future<UserModel> signUp() async {
-    await Future.delayed(Duration(milliseconds: 1500));
+  AccountRepository repository;
 
+  SignUpController() {
+    repository  = AccountRepository();
+  }
+
+  Future<UserModel> signUp(SignUpViewModel model) async {
+    var user = await repository.createAccount(model);
+    return user;
   }
 }
