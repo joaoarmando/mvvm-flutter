@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mvvmproject/controllers/signup_controller.dart';
+import 'package:mvvmproject/view-models/signup_viewmodel.dart';
 
 class SignUpView extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
+  final _controller = SignUpController();
+  var model = new SignUpViewModel();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +32,7 @@ class SignUpView extends StatelessWidget {
                   if (value.isEmpty) return "Nome inválido";               
                   return null;
                 },
-                onSaved: (value) {},
+                onSaved: (value) => model.name = value,
               ),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
@@ -43,7 +48,7 @@ class SignUpView extends StatelessWidget {
                   if (value.isEmpty) return "E-mail inválido";               
                   return null;
                 },
-                onSaved: (value) {},
+                onSaved: (value) => model.email = value,
               ),
               TextFormField(
                 keyboardType: TextInputType.text,
@@ -60,7 +65,7 @@ class SignUpView extends StatelessWidget {
                   if (value.isEmpty) return "Senha inválida";               
                   return null;
                 },
-                onSaved: (value) {},
+                onSaved: (value) => model.passsword = value,
               ),
               ElevatedButton(                
                 child: Text("Cadastrar"),
@@ -68,6 +73,9 @@ class SignUpView extends StatelessWidget {
                   if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();
                   }
+                  _controller.signUp(model).then((data) {
+                    print(data.token);
+                  });
                 }, 
               )
             ],

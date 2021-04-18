@@ -1,7 +1,9 @@
+import 'package:mvvmproject/view-models/signup_viewmodel.dart';
+
 import '../models/user_model.dart';
 
 class AccountRepository {
-  Future<UserModel> createAccount() async{
+  Future<UserModel> createAccount(SignUpViewModel model) async{
     return UserModel(
       id:"1",
       name:"João Armando",
