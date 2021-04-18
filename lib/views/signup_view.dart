@@ -80,13 +80,11 @@ class _SignUpViewState extends State<SignUpView> {
                   if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();
                   }
+                  
                   setState(() {
-                    model.isSigningUp = true;
-                  });
-                  _controller.signUp(model).then((data) {
-                    print(data.token);
-                    setState(() {
-                      model.isSigningUp = false;
+                    _controller.signUp(model).then((data) {
+                      // TODO: 
+                      setState(() { });
                     });
                   });
                 }, 

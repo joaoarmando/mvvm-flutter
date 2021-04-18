@@ -10,7 +10,9 @@ class SignUpController {
   }
 
   Future<UserModel> signUp(SignUpViewModel model) async {
+    model.isSigningUp = true;
     var user = await repository.createAccount(model);
+    model.isSigningUp = false;
     return user;
   }
 }
