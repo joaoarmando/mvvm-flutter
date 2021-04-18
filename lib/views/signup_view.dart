@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mvvmproject/controllers/signup_controller.dart';
-import 'package:mvvmproject/view-models/signup_viewmodel.dart';
+import '../controllers/signup_controller.dart';
+import '../view-models/signup_viewmodel.dart';
+
+import 'home_view.dart';
 
 class SignUpView extends StatefulWidget {
   @override
@@ -85,6 +87,7 @@ class _SignUpViewState extends State<SignUpView> {
                     _controller.signUp(model).then((data) {
                       // TODO: 
                       setState(() { });
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeView()));
                     });
                   });
                 }, 
